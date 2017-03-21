@@ -71,4 +71,10 @@
 		</dependency>
 
 	</dependencies>
+	
+	<scm>
+	  <connection>scm:git:https://github.com/samuelbr/sleuth-data-source.git</connection>
+	  <url>https://github.com/samuelbr/sleuth-data-source</url>
+	  <tag>HEAD</tag>
+	</scm>	
 </project>
