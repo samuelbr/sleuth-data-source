@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import net.ttddyy.dsproxy.QueryInfo;
 
@@ -42,7 +43,16 @@ public class DefaultQueryInfoExtractor implements QueryInfoExtractor {
 		result.put("QueriesCount", Integer.toString(queryInfoList.size()));
 		
 		if (!queryInfoList.isEmpty()) {
-			result.put("MainQuery", queryInfoList.get(0).getQuery());
+			QueryInfo queryInfo = queryInfoList.get(0);
+			result.put("MainQuery", queryInfo.getQuery());
+			
+			String mainQueryParams = queryInfo.getParametersList().stream()
+				.flatMap(List::stream)
+				.map((s) -> s.getArgs()[1])
+				.map(Objects::toString)
+				.collect(Collectors.joining(","));
+			
+			result.put("MainQueryParams", mainQueryParams);
 		}
 		
 		for (int i=1; i<queryInfoList.size(); i++) {
