@@ -11,7 +11,7 @@ import net.ttddyy.dsproxy.QueryInfo;
 
 public class SelectSpanNameExtractor implements QueryInfoExtractor {
 
-	private static final Pattern SELECT = Pattern.compile("select.*from(.*?)(where\\s|group\\s|having\\s|window\\s|union\\s|intersect\\s|except\\s|order\\s|limit\\s|offset\\s|fetch\\s|$).*", Pattern.CASE_INSENSITIVE|Pattern.MULTILINE);
+	private static final Pattern SELECT = Pattern.compile("select.*\\s+from\\s+(.*?)(where\\s|group\\s|having\\s|window\\s|union\\s|intersect\\s|except\\s|order\\s|limit\\s|offset\\s|fetch\\s|$).*", Pattern.CASE_INSENSITIVE|Pattern.MULTILINE);
 	private static final Pattern TABLES_PATTERN = Pattern.compile("(\\s+JOIN\\s+(\\S+)|(,\\s+(\\S+)))", Pattern.CASE_INSENSITIVE|Pattern.MULTILINE);	
 	private static final Pattern FIRST_TABLE_PATTERN = Pattern.compile("^([^\\s,]+)", Pattern.CASE_INSENSITIVE|Pattern.MULTILINE);
 	
