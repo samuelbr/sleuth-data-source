@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 
 import com.github.samuelbr.sleuth.datasource.listener.TracerQueryExecutionListener;
 
-import net.ttddyy.dsproxy.listener.logging.SLF4JLogLevel;
 import net.ttddyy.dsproxy.support.ProxyDataSourceBuilder;
 
 @Configuration
@@ -30,8 +29,6 @@ public class SleuthDatasourceAutoConfiguration {
 		
 		return ProxyDataSourceBuilder
 				.create(dataSource)
-				.logQueryBySlf4j(SLF4JLogLevel.ERROR)
-				.countQuery()
 				.listener(new TracerQueryExecutionListener(tracer))
 				.build();		
 	}
